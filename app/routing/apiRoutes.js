@@ -10,9 +10,9 @@ module.exports = function (app) {
     app.post("/api/friends", function (req, res) {
         var smallestDiff = -1;
         var bestMatch = null;
-        console.log(friendData);
-        if (friendData.length) {
-            friendData.forEach(function (item) {
+        console.log(FriendArray);
+        if (FriendArray.length) {
+            FriendArray.forEach(function (item) {
                 var tempScores = item.scores;
                 console.log(item);
                 var totalDiff = 0;
@@ -30,6 +30,6 @@ module.exports = function (app) {
             });
         }
 
-        friendData.push(req.body);
+        FriendArray.push(req.body);
     });
 };
