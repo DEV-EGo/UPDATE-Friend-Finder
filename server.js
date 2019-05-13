@@ -1,24 +1,25 @@
-//Dependencies
+// my dependencies
 var express = require('express');
 var bodyParser = require('body-parser');
 var path = require('path');
 
-//configuring the express app
-
+// express configuration
 var app = express();
-var PORT = process.env.PORT || 8080;
+var PORT = process.env.PORT || 3000;
+
 
 app.use(express.static(path.join(__dirname, './app/public')));
 
-//adding MIDDLEWARE 
+//middleware for parsing incoming request bodies
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.text());
 
-//routes to my application
-require(path.join(__dirname, './app/routing/apiroutes'))(app);
-require(path.join(__dirname, './app/routing.htmlroutes'))(app);
+//routes
+require(path.join(__dirname, './app/routing/apiRoutes'))(app);
+require(path.join(__dirname, './app/routing/htmlRoutes'))(app);
 
+//listening on PORT
 app.listen(PORT, function () {
-    console.log('app is listening on PORT: ' + PORT);
+    console.log('app is listening on PORT:' + PORT);
 });
